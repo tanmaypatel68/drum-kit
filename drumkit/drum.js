@@ -7,10 +7,11 @@ document.querySelectorAll(".drum")[i].addEventListener("click",handleclick);
 function handleclick(){
     var x=this.innerHTML;
     makesound(x);
-   
+    buttonAnimation(x);
 }
 document.addEventListener("keypress",function(event){
     makesound(event.key);
+    buttonAnimation(event.key);
 });
 
 function makesound(key){
@@ -44,4 +45,9 @@ function makesound(key){
             audio.play();
             break;
     }
+}
+function buttonAnimation(currentkey){
+    var activebutton=document.querySelector("."+currentkey);
+    activebutton.classList.add("pressed");
+    setTimeout(function(){activebutton.classList.remove("pressed");},150);
 }
